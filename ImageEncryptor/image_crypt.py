@@ -1,6 +1,6 @@
 __author__ = 'james'
 
-from PIL import Image
+import Image
 
 # INTERNAL
 import utils
@@ -13,6 +13,7 @@ import utils
 # then a ^ 128+1 = a, (phi totient = 128).as # 129 = 43*3
 
 # this scrambles but can be easily decrypted if method is known
+
 
 def main():
     im, im_arr = load_image("../Images/Daisy_raw.jpg")
@@ -27,7 +28,8 @@ def main():
     save_image("../Images/decrypt.png", im)
     pass
 
-def encrypt_image(file_path, key1, key2, outpath = "Images/encrypt.png"):
+
+def encrypt_image(file_path, key1, key2, outpath="Images/encrypt.png"):
     im, im_arr = load_image(file_path)
     x_size, y_size = im.size
 
@@ -35,7 +37,8 @@ def encrypt_image(file_path, key1, key2, outpath = "Images/encrypt.png"):
     two_key_encryption(im_arr, x_size, y_size, key1, key2)
     save_image(outpath, im)
 
-def decrypt_image(file_path, key1, key2, outpath = "Images/decrypt.png"):
+
+def decrypt_image(file_path, key1, key2, outpath="Images/decrypt.png"):
     im, im_arr = load_image(file_path)
     x_size, y_size = im.size
 
@@ -43,11 +46,13 @@ def decrypt_image(file_path, key1, key2, outpath = "Images/decrypt.png"):
     basic_decrypt_unscramble(im_arr, x_size, y_size)
     save_image(outpath, im)
 
+
 def load_image(file_path):
     im = Image.open(file_path, 'r')
     arr = im.load()
     print "Image loaded"
     return im, arr
+
 
 def save_image(file_path, im):
     im.save(file_path)
@@ -64,6 +69,7 @@ def basic_encrypt_scramble(im_arr, x_size, y_size):
             coprime_pixel = ((c+1 if c % 2 == 0 else c) for c in pixel)
             im_arr[x, y] = tuple(int(c**43 % 256) for c in coprime_pixel)
 
+
 def basic_decrypt_unscramble(im_arr, x_size, y_size):
     for x in range(x_size):
         if x % 100 == 0:
@@ -71,6 +77,7 @@ def basic_decrypt_unscramble(im_arr, x_size, y_size):
         for y in range(y_size):
             pixel = im_arr[x, y]
             im_arr[x, y] = tuple(int(c**3 % 256) for c in pixel)
+
 
 def two_key_encryption(im_arr, x_size, y_size, k1, k2):
     size = x_size*y_size
@@ -117,6 +124,7 @@ def two_key_decryption(im_arr, x_size, y_size, k1, k2):
             im_arr[p_x_index, p_y_index] = temp_hold[x][y]
     pass
 
+
 def rotation_cipher(key, im, im_arr):
     # Use a 128 bit key which goes into an injective map that produces permutations.
     # This key should be chosen using crypto-safe methods - system values etc.
@@ -160,6 +168,7 @@ def rotation_cipher(key, im, im_arr):
                         pass
     pass
 
+
 def rot(im_arr, blk_size, x1, y1):
     temple = []
     for i in range(blk_size):
@@ -174,6 +183,7 @@ def rot(im_arr, blk_size, x1, y1):
 def reverse_rotation_cipher():
     # Same as above code, but we run backwards through the key and the array for each block.
     pass
+
 
 if __name__ == '__main__':
     main()
