@@ -2,7 +2,7 @@ sudo: required
 dist: bionic
 language: python2
 before_install:
-  - sudo apt install -y jp2a
+  - sudo apt update && sudo apt install -y jp2a convert
 install:
   - sudo pip install -r requirements.txt
   - sudo python setup.py install
