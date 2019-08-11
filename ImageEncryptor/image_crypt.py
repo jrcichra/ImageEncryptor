@@ -1,6 +1,6 @@
 __author__ = 'james'
 
-import Image
+from PIL import Image
 
 # INTERNAL
 import utils
