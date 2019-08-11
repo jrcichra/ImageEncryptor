@@ -9,8 +9,6 @@ install:
   - pip install -r requirements.txt
   - python setup.py install
 script:
-  - jp2a --width=76 Images/Daisy_raw.jpg
-  - python ImageEncryptor 1 1 -e Images/Daisy_raw.jpg -o justin.png
-  - convert justin.png jpg:- | jp2a --width=76 -
-  - python ImageEncryptor 1 1 -d justin.png -o justin_out.png
-  - convert justin_out.png jpg:- | jp2a --width=76 -
+  - bash -x test.sh 1 2 1 2
+  - bash -x test.sh 100 200 700 800
+  - bash -x test.sh 123456789 123456789 123456789 123456789
