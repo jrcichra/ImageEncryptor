@@ -4,7 +4,7 @@ language: python
 python:
   - "2.7"
 before_install:
-  - sudo apt update && sudo apt install -y jp2a imagemagick
+  - sudo apt update && sudo apt install -y jp2a imagemagick python-imaging libjpeg-dev zlib1g-dev
 install:
   - sudo pip uninstall PIL
   - sudo pip uninstall Pillow
