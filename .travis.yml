@@ -1,0 +1,14 @@
+sudo: required
+dist: bionic
+language: python2
+before_install:
+  - sudo apt install -y jp2a
+install:
+  - sudo pip install -r requirements.txt
+  - sudo python setup.py install
+script:
+  - jp2a --width=76 Images/Daisy_raw.jpg
+  - python ImageEncryptor 1 1 -e Images/Daisy_raw.jpg -o justin.png
+  - convert justin.png jpg:- | jp2a --width=76 -
+  - python ImageEncryptor 1 1 -d justin.png -o justin_out.png
+  - convert justin_out.png jpg:- | jp2a --width=76 -
