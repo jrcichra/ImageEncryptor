@@ -2,9 +2,10 @@ sudo: required
 dist: bionic
 language: python
 python:
+  - "2.6"
   - "2.7"
 before_install:
-  - sudo apt update && sudo apt install -y jp2a imagemagick
+  - sudo apt install -y jp2a imagemagick
 install:
   - sudo pip install -r requirements.txt
   - sudo python setup.py install
