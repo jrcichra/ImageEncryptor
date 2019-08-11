@@ -4,8 +4,9 @@ language: python
 python:
   - "2.7"
 before_install:
-  - sudo apt update && sudo apt install -y jp2a python-pil imagemagick libjpeg-dev zlib1g-dev
+  - sudo apt update && sudo apt install -y jp2a imagemagick libjpeg-dev zlib1g-dev
 install:
+  - sudo pip install -r requirements.txt
   - sudo python setup.py install
 script:
   - jp2a --width=76 Images/Daisy_raw.jpg
