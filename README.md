@@ -1,4 +1,4 @@
-#Image Encrypter
+# Image Encrypter [![Build Status](https://travis-ci.org/jrcichra/ImageEncryptor.svg?branch=master)](https://travis-ci.org/jrcichra/ImageEncryptor)
 
 
 This is a simple python library for encrypting images. It uses a 2-key permutation system to biject the pixels in a given image.
